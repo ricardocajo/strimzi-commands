@@ -1,14 +1,18 @@
+| Resource  | Long name | Short name |
+| ------------- | ------------- | ------------- |
+| Kafka Topic  | kafkatopic  | kt |
+
 List kafka topics:
 ```
 kubectl get kafkatopic -n <namespace>
 ```
 
-Create Kafka topic:
+Create a kafka topic:
 ```
 kubectl apply -f <topic-definition-file.yaml> -n <namespace>
 ```
 
-Delete Kafka topic:
+Delete a kafka topic:
 ```
 kubectl delete kafkatopic <topic-name> -n <namespace>
 ```
@@ -16,4 +20,14 @@ kubectl delete kafkatopic <topic-name> -n <namespace>
 Describe a kafka topic:
 ```
 kubectl describe kafkatopic <my-topic> -n <namespace>
+```
+
+Edit a kafka topic:
+```
+kubectl edit kafkatopic <topic-name> -n <namespace>
+```
+
+Retrieve a kafka topic yaml:
+```
+kubectl get kafkatopic <topic-name> -n <namespace> -o yaml > kafka-topic.yaml
 ```

@@ -1,18 +1,12 @@
 # Strimzi commands
 A collection of command lines for strimzi kafka, as well as some helpful files.
 
-List all strimzi custom resources
-```
-kubectl get strimzi -n <namespace>
-```
+## Resources
 
-Delete all strimzi custom resources
-```
-kubectl delete $(kubectl get strimzi -o name) -n <namespace>
-```
-
-
-Resources:
+| Resource  | Long name | Short name |
+| ------------- | ------------- | ------------- |
+| Kafka | kafka  | k |
+| Kafka Topic  | kafkatopic  | kt |
 
 Resource	Long name	Short name
 Kafka	kafka	k
@@ -31,9 +25,25 @@ The commands will usually follow the syntax
 kubectl <kubernetes-operator> <strimzi-operator> <args>
 ```
 
-Example, describe a kafka topic:
+Example of describing a kafka topic:
 ```
 kubectl describe kafkatopic <my-topic> -n <namespace>
 ```
 
-Inside each folder are an extensive list of commands and some useful files
+## Commands
+
+List all strimzi custom resources
+```
+kubectl get strimzi -n <namespace>
+```
+
+Delete all strimzi custom resources
+```
+kubectl delete $(kubectl get strimzi -o name) -n <namespace>
+```
+
+Inside each dedicated folder is an extensive list of commands and some useful files.
+
+## Table of contents
+* [Cluster](https://github.com/ricardocajo/strimzi-commands/tree/main/cluster)
+* [Topic](https://github.com/ricardocajo/strimzi-commands/tree/main/topic)
