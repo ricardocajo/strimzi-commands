@@ -1,0 +1,100 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"kafka.strimzi.io/v1beta2","kind":"Kafka","metadata":{"annotations":{},"name":"kafka-certs","namespace":"kafka"},"spec":{"entityOperator":{"topicOperator":{},"userOperator":{}},"kafka":{"config":{"default.replication.factor":1,"inter.broker.protocol.version":"3.4","min.insync.replicas":1,"offsets.topic.replication.factor":1,"transaction.state.log.min.isr":1,"transaction.state.log.replication.factor":1},"listeners":[{"name":"plain","port":9092,"tls":false,"type":"internal"},{"name":"tls","port":9093,"tls":true,"type":"internal"}],"replicas":3,"storage":{"type":"jbod","volumes":[{"deleteClaim":false,"id":0,"size":"20Gi","type":"persistent-claim"}]},"version":"3.4.0"},"zookeeper":{"replicas":3,"storage":{"deleteClaim":false,"size":"10Gi","type":"persistent-claim"}}}}
+  creationTimestamp: "2023-11-02T10:53:21Z"
+  generation: 3
+  name: kafka-certs
+  namespace: kafka
+  resourceVersion: "14668"
+  uid: a3256682-a72c-4184-9b64-f5ee51ce0e3a
+spec:
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+  kafka:
+    config:
+      default.replication.factor: 1
+      inter.broker.protocol.version: "3.4"
+      min.insync.replicas: 1
+      offsets.topic.replication.factor: 1
+      transaction.state.log.min.isr: 1
+      transaction.state.log.replication.factor: 1
+    listeners:
+    - name: plain
+      port: 9092
+      tls: false
+      type: internal
+    - name: tls
+      port: 9093
+      tls: true
+      type: internal
+    replicas: 3
+    storage:
+      type: jbod
+      volumes:
+      - deleteClaim: false
+        id: 0
+        size: 20Gi
+        type: persistent-claim
+    version: 3.4.0
+  zookeeper:
+    replicas: 3
+    storage:
+      deleteClaim: false
+      size: 10Gi
+      type: persistent-claim
+status:
+  clusterId: zaFtOdHFTqeHt3QyEGlKEw
+  conditions:
+  - lastTransitionTime: "2023-11-02T11:03:53.744031185Z"
+    status: "True"
+    type: Ready
+  listeners:
+  - addresses:
+    - host: kafka-certs-kafka-bootstrap.kafka.svc
+      port: 9092
+    bootstrapServers: kafka-certs-kafka-bootstrap.kafka.svc:9092
+    name: plain
+    type: plain
+  - addresses:
+    - host: kafka-certs-kafka-bootstrap.kafka.svc
+      port: 9093
+    bootstrapServers: kafka-certs-kafka-bootstrap.kafka.svc:9093
+    certificates:
+    - |
+      -----BEGIN CERTIFICATE-----
+      MIIFLTCCAxWgAwIBAgIUb8z5SU9hCjv9DDJhCQ14CQsZ4fkwDQYJKoZIhvcNAQEN
+      BQAwLTETMBEGA1UECgwKaW8uc3RyaW16aTEWMBQGA1UEAwwNY2x1c3Rlci1jYSB2
+      MDAeFw0yMzExMDIxMDUzMjFaFw0yNDExMDExMDUzMjFaMC0xEzARBgNVBAoMCmlv
+      LnN0cmltemkxFjAUBgNVBAMMDWNsdXN0ZXItY2EgdjAwggIiMA0GCSqGSIb3DQEB
+      AQUAA4ICDwAwggIKAoICAQC2PC7x4mvVBEgdDTojTI8/b+9qeK3L6BJm+XXN4anI
+      CGdHnTqkCRuj5PBePE9tqocJCe8ghy6PWEhYU/PqfATM0wToLzDRCyZOirVV8dHp
+      WTAGmx/AzNTTERRDg5SPmxJ7rQ5Ca2sLtFtcijxp0eeJ71PjZH9QhqPb2ybjlt/e
+      uk1Anbp3DdY/Fi14FpTcqjJAGiwtRvZUDf4AFzbu25+s3m4WDCquvSRUJF3wlumw
+      56qu2MSmFc0NmuFNdLSfrQLh7uok95JBD9T4LeurezTrCD3JLZ1hCZ2sAA2q/P9I
+      SaktEE80AHAuukz56b6y+Wlav/8fshXFgBsdFNCy6FS4d+MmSEqa7zeY3JI1Qwpz
+      HoA61bVCSgbSrYy8FFEBex4kNk2llY63Xcv348GND6xgJhBUsWyumloFQmFaCQdT
+      Nrl/t1lLxi5fH0QhRtn5B6XmbcR9qgSGSQi3wUTSirZJQReA6ZYUbM584SNi4Pkr
+      eyzocUFt8Tz0ZkpKJDbPy9OssaPNOz/giMyN1hxP+JYywsIX4I/3+UZb/KksDbB4
+      4SbQ7nyBhak8Zjbp0oHtFOFZGFQmgkBFsxdMQzQnx5uWZoqBMHl/keGa1HJc/FWE
+      OhqeiF4sE8hqFv2jdUZMsOl0obVUbKt4cljM83snqLke64QmNaH11nxH7J2G3AxL
+      bwIDAQABo0UwQzAdBgNVHQ4EFgQU2jVjQ8mNmb5c5Jnm3TkDyd2K4IcwEgYDVR0T
+      AQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAQYwDQYJKoZIhvcNAQENBQADggIB
+      ACRcVVHNjddKs2vK7Swir+66ovZwDwXPPDZVqWmfoqDOUsxJrrBQ/7sTuQuqEn1f
+      mmC1yXllpgdy8zl/igAiyWXf3FyzERB5S9f2cLws+RuvOxGfzcUXTctTRD+XaIZM
+      34SvrcWVpF8ektjDUF+a3+V/Lsu3ijjnKy153W2LfH6Q7rKkkobN2Lfoyl85Z8GT
+      u2B6ukJWTqQbTRnIkVFtvxgeI6kQUjsbdbzePGMdpcMbS+tDzwvg8aZM2iUdJkI0
+      pDfFwVBv2QV4ox7ZHUgvrMbNc8JdbvIHw9OMZnbH87BWvbD6IV1WjolkrjyCxsZC
+      aX8dLJ3RUDFoKd69hBlVZBz15an6xuhi5q1ugUd0zQieGrKCrps7KZaMskfKQ8MZ
+      HHI9q26AB82dl2O7WLU82mEaHrEPgO5CRKw3JtXztfXrjs63kCWDK9dXAGNTXdgE
+      1tcJdqqZypUkCUhSdsh80k3R9q9ecb4vPkkBlh6Gc/N0Up8bpaaY7Ti9KJIHo/2F
+      cJ51aSBVQ8jOoBq8KAEi55MI7mhJ2QVPsGyMTgMDdvYLfRxvEotxCDIHDxe+Tmj/
+      wxic08uYi7vHsjSunVLWYQBdTJ6J5HBKVf65g0SKvPtFznRN6dpSnZl9eWl44cHN
+      DTbuvuQKNxZ/pZwAozMqRQoZjZwjeDh46pSVxY16xM4C
+      -----END CERTIFICATE-----
+    name: tls
+    type: tls
+  observedGeneration: 3
