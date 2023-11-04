@@ -46,3 +46,8 @@ Inside each dedicated folder is an extensive list of commands and some useful fi
 * [Cluster](https://github.com/ricardocajo/strimzi-commands/tree/main/cluster)
 * [Topic](https://github.com/ricardocajo/strimzi-commands/tree/main/topic)
 * [User](https://github.com/ricardocajo/strimzi-commands/tree/main/user)
+* [K8s Resources](https://github.com/ricardocajo/strimzi-commands/tree/main/k8s-resources)
+
+### Documentation
+
+[Strimzi documentation](https://strimzi.io/documentation/)
