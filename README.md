@@ -1,5 +1,5 @@
 # Strimzi commands
-A collection of command lines for strimzi kafka, as well as some helpful files.
+A collection of command lines for Strimzi Kafka, as well as some helpful files.
 
 ## Resources
 
@@ -15,6 +15,7 @@ A collection of command lines for strimzi kafka, as well as some helpful files.
 | Kafka Mirror Maker 2 | kafkamirrormaker2 | kmm2 |
 | Kafka Bridge | kafkabridge | kb |
 | Kafka Rebalance | kafkarebalance | kr |
+
 [Source](https://strimzi.io/blog/2020/07/22/tips-and-tricks-for-running-strimzi-with-kubectl/)
 
 The commands will usually follow the syntax:
@@ -22,19 +23,19 @@ The commands will usually follow the syntax:
 kubectl <kubernetes-operator> <strimzi-operator> <args>
 ```
 
-Example of describing a kafka topic:
+Example of describing a Kafka topic:
 ```
 kubectl describe kafkatopic <my-topic> -n <namespace>
 ```
 
 ## Commands
 
-List all strimzi custom resources
+List all Strimzi custom resources
 ```
 kubectl get strimzi -n <namespace>
 ```
 
-Delete all strimzi custom resources
+Delete all Strimzi custom resources
 ```
 kubectl delete $(kubectl get strimzi -o name) -n <namespace>
 ```
@@ -44,3 +45,4 @@ Inside each dedicated folder is an extensive list of commands and some useful fi
 ## Table of contents
 * [Cluster](https://github.com/ricardocajo/strimzi-commands/tree/main/cluster)
 * [Topic](https://github.com/ricardocajo/strimzi-commands/tree/main/topic)
+* [User](https://github.com/ricardocajo/strimzi-commands/tree/main/user)

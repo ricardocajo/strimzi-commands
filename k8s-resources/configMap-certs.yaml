@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-cli
+  namespace: kafka
+data:
+  client.properties: |
+    security.protocol=SSL
+    ssl.truststore.location=/user/app/ca-cert/ca.p12
+    ssl.truststore.password=oe1HQ74r51Z6
+    ssl.keystore.location=/user/app/ca-cli/user.p12
+    ssl.keystore.password=ECRkvZdk5t2wVsSsBYsfcFCn2WxBG437
