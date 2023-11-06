@@ -4,9 +4,18 @@ metadata:
   name: client-cli
   namespace: kafka
 data:
-  client.properties: |
+  create_cert.sh: |
+    #!/bin/sh
+
+    echo "starting"
+
+    TRUST_PASS=$(cat /user/app/ca-cert/ca.password)
+    CLIENT_PASS=$(cat //user/app/ca-cli/user.password)
+
+    echo "
     security.protocol=SSL
     ssl.truststore.location=/user/app/ca-cert/ca.p12
-    ssl.truststore.password=oe1HQ74r51Z6
+    ssl.truststore.password=$TRUST_PASS
     ssl.keystore.location=/user/app/ca-cli/user.p12
-    ssl.keystore.password=ECRkvZdk5t2wVsSsBYsfcFCn2WxBG437
+    ssl.keystore.password=$CLIENT_PASS
+    " > /tmp/client.properties
