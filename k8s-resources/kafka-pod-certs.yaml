@@ -7,18 +7,22 @@ metadata:
 spec:
   containers:
     - name: kafka-cli
-      command: 
+      command:
         - /bin/sh
         - '-c'
-        - tail -f /dev/null
+        - |
+          cp /user/app/config/create_cert.sh /tmp/create_cert.sh &&
+          chmod +x /tmp/create_cert.sh &&
+          /tmp/create_cert.sh &&
+          tail -f /dev/null
       image: confluentinc/cp-kafka-connect:7.3.1
-      volumeMounts: 
-       - name: kafka-certs-cluster-ca-cert
-         mountPath: /user/app/ca-cert
-       - name: kafka-certs-kafka-cli
-         mountPath: /user/app/ca-cli
-       - name: config-volume
-         mountPath: /user/app/config
+      volumeMounts:
+        - name: kafka-certs-cluster-ca-cert
+          mountPath: /user/app/ca-cert
+        - name: kafka-certs-kafka-cli
+          mountPath: /user/app/ca-cli
+        - name: config-volume
+          mountPath: /user/app/config
       env:
         - name: KAFKA_BOOTSTRAP_SERVERS
           value: kafka-certs-kafka-bootstrap:9093

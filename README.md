@@ -32,7 +32,9 @@ kubectl describe kafkatopic <my-topic> -n <namespace>
 
 Install the Strimzi Custom Resource Definitions (CRDs) for Kafka (using Helm):
 ```
-helm repo add strimzi https://strimzi.io/charts/ -n <namespace>
+helm repo add strimzi https://strimzi.io/charts/
+```
+```
 helm install strimzi-operator strimzi/strimzi-kafka-operator -n <namespace>
 ```
 
