@@ -48,9 +48,18 @@ Delete all Strimzi custom resources
 kubectl delete $(kubectl get strimzi -o name) -n <namespace>
 ```
 
-Inside each dedicated folder is an extensive list of commands and some useful files.
+Force certificate renewal:
+```
+kubectl annotate secret kafka-certs-cluster-ca-cert -n <namespace> strimzi.io/force-renew=true -n <namespace>
+```
+```
+kubectl annotate secret kafka-certs-clients-ca-cert -n <namespace> strimzi.io/force-renew=true -n <namespace>
+```
 
 ## Table of contents
+
+Inside each dedicated folder is an extensive list of commands and some useful files.
+
 * [Cluster](https://github.com/ricardocajo/strimzi-commands/tree/main/cluster)
 * [Topic](https://github.com/ricardocajo/strimzi-commands/tree/main/topic)
 * [User](https://github.com/ricardocajo/strimzi-commands/tree/main/user)

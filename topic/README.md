@@ -31,3 +31,8 @@ Retrieve a kafka topic yaml:
 ```
 kubectl get kafkatopic <topic-name> -n <namespace> -o yaml > kafka-topic.yaml
 ```
+
+List kafka topics (inside client pod):
+```
+kafka-topics --list --bootstrap-server kafka-certs-kafka-bootstrap:9093 --command-config /tmp/client.properties
+```

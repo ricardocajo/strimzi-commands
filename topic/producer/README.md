@@ -12,5 +12,5 @@ In the brokers, inside the "bin" folder are the default Kafka scripts including 
 
 In the kafka-cli, run:
 ```
-kafka-console-producer --topic teste2 --bootstrap-server kafka-certs-kafka-bootstrap:9093 --producer.config /tmp/client.properties
+kafka-console-producer --topic <topic_name> --bootstrap-server kafka-certs-kafka-bootstrap:9093 --producer.config /tmp/client.properties
 ```

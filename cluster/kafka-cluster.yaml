@@ -40,3 +40,7 @@ spec:
   entityOperator:
     topicOperator: {}
     userOperator: {}
+  clusterCa:
+    generateSecretOwnerReference: false
+  clientsCa:
+    generateSecretOwnerReference: false
