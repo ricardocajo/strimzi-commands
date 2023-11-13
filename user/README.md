@@ -9,7 +9,7 @@ kubectl get kafkauser -n <namespace>
 
 Create a Kafka user:
 ```
-kubectl apply -f <kafka-user.yaml>
+kubectl apply -f <kafka-user.yaml> -n <namespace>
 ```
 
 Delete a Kafka user:
