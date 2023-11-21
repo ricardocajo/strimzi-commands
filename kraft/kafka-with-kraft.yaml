@@ -85,7 +85,7 @@ spec:
       size: 10Gi
       deleteClaim: false
   entityOperator:
-    topicOperator: {}
+    #topicOperator: {}
     userOperator: {}
   clusterCa:
     generateSecretOwnerReference: false

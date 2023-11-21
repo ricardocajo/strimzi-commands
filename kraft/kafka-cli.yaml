@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kafka-cli
+  name: kafka-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-cli
+  template:
+    metadata:
+      labels:
+        app: kafka-cli
+    spec:
+      containers:
+        - name: kafka-cli
+          command:
+            - /bin/sh
+            - '-c'
+            - |
+              cp /user/app/config/create_cert.sh /tmp/create_cert.sh &&
+              chmod +x /tmp/create_cert.sh &&
+              /tmp/create_cert.sh &&
+              tail -f /dev/null
+          image: confluentinc/cp-kafka-connect:7.3.1
+          volumeMounts:
+            - name: kraft-cluster-cluster-ca-cert
+              mountPath: /user/app/ca-cert
+            - name: kraft-cluster-kafka-cli
+              mountPath: /user/app/ca-cli
+            - name: config-volume
+              mountPath: /user/app/config
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: kraft-cluster-kafka-bootstrap:9093
+      volumes:
+        - name: kraft-cluster-cluster-ca-cert
+          secret:
+            secretName: kraft-cluster-cluster-ca-cert
+        - name: kraft-cluster-kafka-cli
+          secret:
+            secretName: kafka-cli
+        - name: config-volume
+          configMap:
+            name: client-cli
