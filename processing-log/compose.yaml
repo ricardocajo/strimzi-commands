@@ -1,11 +1,5 @@
 version: '2'
 services:
-  #zookeeper:
-  #  image: confluentinc/cp-zookeeper:latest
-  #  environment:
-  #    ZOOKEEPER_CLIENT_PORT: 32181
-  #    ZOOKEEPER_TICK_TIME: 2000
-
   broker:
     image: confluentinc/cp-kafka:latest
     hostname: broker
@@ -28,7 +22,6 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
-
   schema-registry:
     image: confluentinc/cp-schema-registry:latest
     hostname: schema-registry
@@ -40,10 +33,8 @@ services:
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: broker:9092
-
   ksqldb-server:
-    image: confluentinc/ksqldb-server:latest
-    platform: linux/amd64
+    image: confluentinc/cp-ksqldb-server:latest
     hostname: ksqldb-server
     container_name: ksqldb-server
     depends_on:
@@ -53,10 +44,10 @@ services:
     - 8088:8088
     environment:
       KSQL_CONFIG_DIR: /etc/ksqldb
-      KSQL_LOG4J_OPTS: -Dlog4j.configuration=file:/opt/app/log4j/log4j.properties -Dksql.log.file=/etc/ksqldb/ksql.log -Dksql.config.dir=/etc/ksqldb
+      KSQL_LOG4J_OPTS: -Dlog4j.configuration=file:/opt/app/log4j/log4j.properties
       KSQL_BOOTSTRAP_SERVERS: broker:9092
       KSQL_HOST_NAME: ksqldb-server
-      KSQL_LISTENERS: http://ksqldb-server:8088 #http://0.0.0.0:8088
+      KSQL_LISTENERS: http://0.0.0.0:8088
       KSQL_CACHE_MAX_BYTES_BUFFERING: 0
       KSQL_KSQL_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: 'true'
@@ -65,12 +56,8 @@ services:
       KSQL_KSQL_LOGGING_PROCESSING_ROWS_INCLUDE: 'true'
     volumes:
     - ./log4j:/opt/app/log4j
-
-  # Access the cli by running:
-  # > docker-compose exec ksqldb-cli  ksql http://primary-ksqldb-server:8088
   ksqldb-cli:
-    image: confluentinc/ksqldb-cli:latest
-    platform: linux/amd64
+    image: confluentinc/cp-ksqldb-cli:latest
     container_name: ksqldb-cli
     depends_on:
     - broker
@@ -79,7 +66,7 @@ services:
     tty: true
     environment:
       KSQL_CONFIG_DIR: /etc/ksqldb
-      KSQL_SERVER: http://ksqldb-server:8088
     volumes:
     - ./src:/opt/app/src
     - ./test:/opt/app/test
+    
